@@ -1,8 +1,10 @@
 #include <print>
-#include <SDL3/SDL.h>
+#include "physics.hpp"
+#include "renderer.hpp"
+#include "types.hpp"
+#include <vector>
 
 int main() {
-    std::println("Hello");
 
     return 0;
 }
