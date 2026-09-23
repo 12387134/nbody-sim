@@ -1,24 +1,48 @@
 #pragma once
 
 namespace nbody {
-    template <typename N>
+
+    enum class Celestial {
+        Debris,
+        Satellite,
+        Dwarf,
+        Planet,
+        Star,
+        BlackHole
+    };
+
+    template <typename N, typename Scalar>
     struct Vector2D {
         N x{};
         N y{};
 
         Vector2D(N x, N y) : x{x}, y{y} {}
 
-        Vector2D& operator+=(const Vector2D& other) {
+        Vector2D& operator+=(const Vector2D other) {
             this->x += other.x;
             this->y += other.y;
             return *this;
         }
 
-        Vector2D& operator-=(const Vector2D& other) {
+        Vector2D& operator-=(const Vector2D other) {
             this->x -= other.x;
             this->y -= other.y;
             return *this;
         }
+
+        Vector2D& operator+=(const <Scalar> other) {
+            this->x += other;
+            this->y += other;
+            return *this;
+        }
+
+        Vector2D& operator-=(const <Scalar> other) {
+            this->x -= other;
+            this->y -= other;
+            return *this;
+        }
+
+        // write multiplication and division implementations
 
     };
 
