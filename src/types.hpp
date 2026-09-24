@@ -20,7 +20,7 @@ namespace nbody {
         N x{};
         N y{};
 
-        Vector2D(N x, N y) : x{x}, y{y} {}
+        Vector2D(N x = 0, N y = 0) : x{x}, y{y} {}
 
         // Vector to Vector Operations (Operation + Assignment)
 
@@ -64,14 +64,14 @@ namespace nbody {
             };
         }
 
-        Vector2D operator+(const Vector2D other) const {
+        Vector2D operator*(const Vector2D other) const {
             return Vector2D {
             this->x * other.x,
             this->y * other.y
             };
         }
 
-        Vector2D operator+(const Vector2D other) const {
+        Vector2D operator/(const Vector2D other) const {
             return Vector2D {
             this->x / other.x,
             this->y / other.y
@@ -109,56 +109,56 @@ namespace nbody {
 
         Vector2D operator+(const N other) const {
             return Vector2D {
-            this->x + other.x,
-            this->y + other.y
+            this->x + other,
+            this->y + other
             };
         }
 
         Vector2D operator-(const N other) const {
             return Vector2D {
-            this->x - other.x,
-            this->y - other.y
+            this->x - other,
+            this->y - other
             };
         }
 
         Vector2D operator*(const N other) const {
             return Vector2D {
-            this->x * other.x,
-            this->y * other.y
+            this->x * other,
+            this->y * other
             };
         }
 
         Vector2D operator/(const N other) const {
             return Vector2D {
-            this->x / other.x,
-            this->y / other.y
+            this->x / other,
+            this->y / other
             };
         }
 
         // Vector Methods
 
-        T magnitudeSquared() const {
+        [[nodiscard]] N magnitudeSquared() const {
             return x * x + y * y;
         }
 
-        T magnitude() const {
+        [[nodiscard]] N magnitude() const {
             return std::sqrt(x * x + y * y);
         }
 
-        Vector2D normalize() const {
-            return *this / magnitude();
+        [[nodiscard]] Vector2D normalize() const {
+            return *this / (magnitude() + 0.1f);
         }
 
-        T dotProduct(const Vector2D& other) const {
+        [[nodiscard]] N dotProduct(const Vector2D& other) const {
             return (this->x * other.x) + (this->y * other.y);
         }
 
-        T distanceSquared(const Vector2D& other) const {
-            return (*this - other).magnitudeSquared()
+        [[nodiscard]] N distanceSquared(const Vector2D& other) const {
+            return (*this - other).magnitudeSquared();
         }
 
-        T distance(const Vector2D& other) const {
-            return (*this - other).magnitude()
+        [[nodiscard]] N distance(const Vector2D& other) const {
+            return (*this - other).magnitude();
         }
 
     };
