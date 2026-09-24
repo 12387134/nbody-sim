@@ -11,6 +11,7 @@ add_executable(nbody-sim
     src/main.cpp
     src/physics.cpp
     src/renderer.cpp
+    src/body.cpp
 )
 
 target_link_libraries(nbody-sim PRIVATE SDL3::SDL3)
