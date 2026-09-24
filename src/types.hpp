@@ -11,7 +11,7 @@ namespace nbody {
         BlackHole
     };
 
-    template <typename N, typename Scalar>
+    template <typename N>
     struct Vector2D {
         N x{};
         N y{};
@@ -30,13 +30,13 @@ namespace nbody {
             return *this;
         }
 
-        Vector2D& operator+=(const <Scalar> other) {
+        Vector2D& operator+=(const N other) {
             this->x += other;
             this->y += other;
             return *this;
         }
 
-        Vector2D& operator-=(const <Scalar> other) {
+        Vector2D& operator-=(const N other) {
             this->x -= other;
             this->y -= other;
             return *this;
