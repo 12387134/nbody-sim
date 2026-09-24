@@ -2,6 +2,7 @@
 #include <format>
 #include <string>
 #include <print>
+#include <cmath>
 
 namespace nbody {
 
@@ -49,28 +50,32 @@ namespace nbody {
 
         // Vector to Vector Operations (Operation Only)
 
-        Vector2D operator+(const Vector2D other) {
-            this->x + other.x;
-            this->y + other.y;
-            return *this;
+        Vector2D operator+(const Vector2D other) const {
+            return Vector2D {
+            this->x + other.x,
+            this->y + other.y
+            };
         }
 
-        Vector2D& operator-(const Vector2D other) {
-            this->x - other.x;
-            this->y - other.y;
-            return *this;
+        Vector2D operator-(const Vector2D other) const {
+            return Vector2D {
+            this->x - other.x,
+            this->y - other.y
+            };
         }
 
-        Vector2D operator*(const Vector2D other) {
-            this->x * other.x;
-            this->y * other.y;
-            return *this;
+        Vector2D operator+(const Vector2D other) const {
+            return Vector2D {
+            this->x * other.x,
+            this->y * other.y
+            };
         }
 
-        Vector2D operator/(const Vector2D other) {
-            this->x / other.x;
-            this->y / other.y;
-            return *this;
+        Vector2D operator+(const Vector2D other) const {
+            return Vector2D {
+            this->x / other.x,
+            this->y / other.y
+            };
         }
 
 
@@ -102,31 +107,66 @@ namespace nbody {
 
         // Vector to Scalar Operations (Operation Only)
 
-        Vector2D operator+(const N other) {
-            this->x + other;
-            this->y + other;
-            return *this;
+        Vector2D operator+(const N other) const {
+            return Vector2D {
+            this->x + other.x,
+            this->y + other.y
+            };
         }
 
-        Vector2D operator-(const N other) {
-            this->x - other;
-            this->y - other;
-            return *this;
+        Vector2D operator-(const N other) const {
+            return Vector2D {
+            this->x - other.x,
+            this->y - other.y
+            };
         }
 
-        Vector2D operator*(const N other) {
-            this->x * other;
-            this->y * other;
-            return *this;
+        Vector2D operator*(const N other) const {
+            return Vector2D {
+            this->x * other.x,
+            this->y * other.y
+            };
         }
 
-        Vector2D operator/(const N other) {
-            this->x / other;
-            this->y / other;
-            return *this;
+        Vector2D operator/(const N other) const {
+            return Vector2D {
+            this->x / other.x,
+            this->y / other.y
+            };
         }
+
+        // Vector Methods
+
+        T magnitudeSquared() const {
+            return x * x + y * y;
+        }
+
+        T magnitude() const {
+            return std::sqrt(x * x + y * y);
+        }
+
+        Vector2D normalize() const {
+            return *this / magnitude();
+        }
+
+        T dotProduct(const Vector2D& other) const {
+            return (this->x * other.x) + (this->y * other.y);
+        }
+
+        T distanceSquared(const Vector2D& other) const {
+            return (*this - other).magnitudeSquared()
+        }
+
+        T distance(const Vector2D& other) const {
+            return (*this - other).magnitude()
+        }
+
     };
 
+    template <typename N> 
+    Vector2D<N> operator*(N other, const Vector2D<N>& vector) {
+        return vector * other;
+    }
 
     struct Color {
         int r{};
