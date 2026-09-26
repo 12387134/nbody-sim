@@ -16,7 +16,7 @@ class Server {
     public:
         Server (int width, int height, nbody::Color color, bool active=true);
         ~Server();
-        void initialize(std::string Title);
+        void initialize(const std::string& title);
         void run();
         void end();
         bool running() const;

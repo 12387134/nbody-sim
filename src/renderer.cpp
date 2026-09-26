@@ -2,7 +2,7 @@
 
 Server::Server(int width, int height, nbody::Color color, bool active) : width{width}, height{height}, color{color}, active{active} {}
 
-void Server::initialize(std::string Title) {
+void Server::initialize(const std::string& title) {
     if (!SDL_Init(SDL_INIT_VIDEO)) {
         std::println("{}", SDL_GetError());
         active = false;
@@ -10,7 +10,7 @@ void Server::initialize(std::string Title) {
     }
 
     window = SDL_CreateWindow (
-        Title.c_str(),
+        title.c_str(),
         width,
         height,
         0
@@ -68,7 +68,8 @@ bool Server::running() const {
 }
 
 Server::~Server() {
-    SDL_DestroyGPUDevice(gpuDevice);
+    SDL_ReleaseWindowFromGPUDevice(gpuDevice, window);
     SDL_DestroyWindow(window);
+    SDL_DestroyGPUDevice(gpuDevice);
     SDL_Quit();
 }

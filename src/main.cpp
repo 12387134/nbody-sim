@@ -3,17 +3,19 @@
 #include "types.hpp"
 #include <vector>
 
+const nbody::Color _Color{255, 255, 255, 1};
+constexpr int HEIGHT{600};
+constexpr int WIDTH{800};
+
 int main() {
-    nbody::Color _Color{255, 255, 255, 1};
-    Server _Server{800, 600, _Color};
-    _Server.initialize("nbody-sim");
+    //Server server{WIDTH, HEIGHT, _Color};
+    //server.initialize("nbody-sim");
 
+    //if (!server.running()) {
+        //return -1;
+    //}
 
-    if (!_Server.running()) {
-        return -1;
-    }
-
-    _Server.run();
+    //server.run();
 
     return 0;
 }

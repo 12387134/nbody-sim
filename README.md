@@ -17,6 +17,8 @@ This project is currently in active development.
 * SDL3 GPU Rendering
 * Mechanics (Force, Gravity, Acceleration, Collision)
 * Celestial Bodies (Planets, Stars, Debris, Satellites)
+* Verlet Integration
+* Barnes Hut Algorithm
 
 
 ## Project Stack. 
