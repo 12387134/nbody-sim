@@ -8,14 +8,14 @@ constexpr int HEIGHT{600};
 constexpr int WIDTH{800};
 
 int main() {
-    //Server server{WIDTH, HEIGHT, _Color};
-    //server.initialize("nbody-sim");
+    Server server{WIDTH, HEIGHT, _Color};
+    server.initialize("nbody-sim");
+    
+    if (!server.running()) {
+        return -1;
+    }
 
-    //if (!server.running()) {
-        //return -1;
-    //}
-
-    //server.run();
+    server.run();
 
     return 0;
 }
